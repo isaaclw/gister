@@ -552,10 +552,10 @@ export_to() {
 init() {
   # login
   if ! test -f $HOME/.gist; then
-    echo 'We need your username and password to get an OAuth2 token (with the "gist" permission).'
-    echo 'We will not store your password.'
-    gist --login
-    echo 'Your GitHub OAuth2 token is stored at ~/.gist'
+      echo "Go to https://github.com/settings/tokens/new and generate a token"
+      echo "   Ensure the 'gist' permission is checked"
+      read -p "Token: " gist_token
+      echo "$gist_token" > $HOME/.gist
   fi
   # store
   echo 'Where do you want to store local copies of your gists?'
